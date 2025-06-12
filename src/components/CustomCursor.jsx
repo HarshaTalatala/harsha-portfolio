@@ -4,8 +4,25 @@ const CustomCursor = () => {
   const cursorRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const checkDevice = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkDevice();
+
+    window.addEventListener('resize', checkDevice);
+
+    return () => {
+      window.removeEventListener('resize', checkDevice);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
+
     const cursor = cursorRef.current;
 
     const moveCursor = (e) => {
@@ -49,7 +66,11 @@ const CustomCursor = () => {
         el.removeEventListener('mouseleave', removeHover);
       });
     };
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <div
