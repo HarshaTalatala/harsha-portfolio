@@ -52,9 +52,9 @@ const Landing = () => {
       </nav>
 
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 md:pt-56 pb-16 md:pb-20">
-        <header className="text-left mb-16 min-h-[150px] max-w-full">
+        <header className="text-left mb-16 min-h-[120px] max-w-full">
           <motion.h1
-            className="break-words text-5xl pb-4 sm:text-6xl md:text-7xl lg:text-8xl font-extrabold bg-gradient-to-r from-orange-500 to-amber-300 bg-clip-text text-transparent tracking-tighter sm:tracking-tight"
+            className="break-words text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-orange-500 to-amber-300 bg-clip-text text-transparent tracking-tight"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
