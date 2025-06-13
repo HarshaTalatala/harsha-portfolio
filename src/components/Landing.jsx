@@ -12,22 +12,25 @@ const Landing = () => {
 
   return (
     <section id="home" className="relative w-full">
-      
       <nav className="absolute top-4 md:top-8 left-1/2 -translate-x-1/2 flex items-center p-1 sm:p-2 bg-zinc-900/80 border border-zinc-700 rounded-full z-20">
         {navItems.map((item) => (
           <a
             key={item.id}
-            href={item.url || `#${item.id}`}
+            href={item.url}
             onClick={(e) => {
+              setActiveLink(item.id);
               if (item.url) {
                 e.preventDefault();
-                window.open(item.url, '_blank');
+                window.open(item.url, '_blank', 'noopener,noreferrer');
               }
-              setActiveLink(item.id);
             }}
-            className={`relative px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded-full z-10 transition-colors duration-300 ${activeLink === item.id ? 'text-orange-500' : 'text-neutral-400 hover:text-white'}`}
-            target={item.url ? "_blank" : ""}
-            rel={item.url ? "noopener noreferrer" : ""}
+            className={`relative px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded-full z-10 transition-colors duration-300 ${
+              activeLink === item.id
+                ? 'text-orange-500'
+                : 'text-neutral-400 hover:text-white'
+            }`}
+            target={item.url ? '_blank' : undefined}
+            rel={item.url ? 'noopener noreferrer' : undefined}
           >
             {activeLink === item.id && (
               <motion.div
@@ -49,13 +52,12 @@ const Landing = () => {
       </nav>
 
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 md:pt-56 pb-16 md:pb-20">
-        
-        <header className="text-left mb-16">
+        <header className="text-left mb-16 min-h-[150px] max-w-full">
           <motion.h1
             className="break-words text-5xl pb-4 sm:text-6xl md:text-7xl lg:text-8xl font-extrabold bg-gradient-to-r from-orange-500 to-amber-300 bg-clip-text text-transparent tracking-tighter sm:tracking-tight"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             Harsha Vardhan Reddy Talatala
           </motion.h1>
@@ -63,7 +65,7 @@ const Landing = () => {
             className="pt-1 text-lg md:text-xl text-neutral-400"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
+            transition={{ delay: 0.2, duration: 0.4, ease: 'easeOut' }}
           >
             Frontend developer with a love for clean design.
           </motion.p>
@@ -75,7 +77,7 @@ const Landing = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <div className="text-5xl text-neutral-600 mr-4 md:mr-8 mt-1 select-none">↳</div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6">
@@ -96,7 +98,7 @@ const Landing = () => {
             transition={{
               repeat: Infinity,
               duration: 1.5,
-              ease: "easeInOut",
+              ease: 'easeInOut',
             }}
             className="flex flex-col items-center cursor-pointer"
             aria-label="Scroll down"
@@ -104,7 +106,7 @@ const Landing = () => {
               e.preventDefault();
               document.getElementById('expertise')?.scrollIntoView({
                 behavior: 'smooth',
-                block: 'start'
+                block: 'start',
               });
             }}
           >
