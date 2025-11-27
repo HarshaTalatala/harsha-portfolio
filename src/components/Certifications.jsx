@@ -13,6 +13,13 @@ const SIcon = (props) => (
 );
 
 const certificationsData = [
+  {
+    name: 'Java Spring Framework 6 & Spring Boot 3',
+    platform: 'Udemy',
+    date: 'Completed',
+    link: 'https://www.udemy.com/certificate/UC-93f457f1-a1f9-48ed-bdd5-8457c79b9bd3/',
+    Icon: SiUdemy,
+  },
      {
     name: 'Meta Advanced React',
     platform: 'Coursera',
@@ -20,25 +27,11 @@ const certificationsData = [
     link: 'https://coursera.org/share/b34510b8718a257c8d3b05aa395b50ad',
     Icon: SiCoursera,
   },
-    {
-    name: 'Meta React Basics',
-    platform: 'Coursera',
-    date: 'MAY 2025',
-    link: 'https://coursera.org/share/b34510b8718a257c8d3b05aa395b50ad',
-    Icon: SiCoursera,
-  },
-  {
-    name: 'Java Spring Framework 6 & Spring Boot 3',
-    platform: 'Udemy',
-    date: 'In Progress',
-    link: 'https://www.udemy.com/certificate/UC-EXAMPLE/',
-    Icon: SiUdemy,
-  },
   {
     name: 'GitHub Foundations Certification',
     platform: 'GitHub Education',
     date: 'Active',
-    link: 'http://www.github.com',
+    link: 'http://www.github.com/HarshaTalatala',
     Icon: SiGithub,
   },
   {
@@ -49,31 +42,10 @@ const certificationsData = [
     Icon: SIcon,
   },
   {
-    name: 'Javascript Basics',
-    platform: 'Scrimba',
-    date: 'Jan 2025',
-    link: 'https://scrimba.com/certificate-cert2uNjfKA1MEDLJuvQbrH9XVtSzmhnBtfoycp',
-    Icon: SIcon,
-  },
-  {
     name: 'Tailwind CSS',
     platform: 'Scrimba',
     date: 'NOV 2024',
     link: 'https://scrimba.com/certificate-cert24zAwJ78kYHKSE4ajCScsqyrgJD9ACumH4qgg',
-    Icon: SIcon,
-  },
-  {
-    name: 'Bootstrap',
-    platform: 'Scrimba',
-    date: 'OCT 2024',
-    link: 'https://scrimba.com/certificate-cert2uNjfKA1MEDLJuvQbrH9VmD8q9LkdZz9qFz',
-    Icon: SIcon,
-  },
-  {
-    name: 'HTML and CSS',
-    platform: 'Scrimba',
-    date: 'OCT 2024',
-    link: 'https://scrimba.com/certificate-cert2uNjfKA1MEDLJuvQbrH9W1bKiEY3Rceaae4',
     Icon: SIcon,
   }
 ];

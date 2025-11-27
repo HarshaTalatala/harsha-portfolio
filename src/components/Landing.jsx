@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 const navItems = [
   { id: 'resume', name: 'Resume', url: 'https://drive.google.com/file/d/1fvN6ldD5Yaa4Akexv1VaENh28Nl0VyoO/view?usp=sharing' },
+  { id: 'projects', name: 'Projects', url: '#projects' },
   { id: 'linkedin', name: 'Linkedin', url: 'https://www.linkedin.com/in/HarshaTalatala' },
   { id: 'github', name: 'GitHub', url: 'https://github.com/HarshaTalatala' },
 ];
@@ -19,18 +20,27 @@ const Landing = () => {
             href={item.url}
             onClick={(e) => {
               setActiveLink(item.id);
-              if (item.url) {
-                e.preventDefault();
-                window.open(item.url, '_blank', 'noopener,noreferrer');
-              }
+                if (item.url) {
+                  if (item.url.startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = item.url.replace('#', '');
+                    document.getElementById(targetId)?.scrollIntoView({
+                      behavior: 'smooth',
+                      block: 'start',
+                    });
+                  } else {
+                    e.preventDefault();
+                    window.open(item.url, '_blank', 'noopener,noreferrer');
+                  }
+                }
             }}
             className={`relative px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded-full z-10 transition-colors duration-300 ${
               activeLink === item.id
                 ? 'text-orange-500'
                 : 'text-neutral-400 hover:text-white'
             }`}
-            target={item.url ? '_blank' : undefined}
-            rel={item.url ? 'noopener noreferrer' : undefined}
+            target={item.url && !item.url.startsWith('#') ? '_blank' : undefined}
+            rel={item.url && !item.url.startsWith('#') ? 'noopener noreferrer' : undefined}
           >
             {activeLink === item.id && (
               <motion.div
@@ -67,7 +77,7 @@ const Landing = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.4, ease: 'easeOut' }}
           >
-            Frontend developer with a love for clean design.
+            Backend-Focused Full Stack Developer
           </motion.p>
         </header>
 
@@ -82,10 +92,10 @@ const Landing = () => {
           <div className="text-5xl text-neutral-600 mr-4 md:mr-8 mt-1 select-none">↳</div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6">
             <p className="text-md md:text-lg lg:text-xl text-neutral-300 leading-relaxed">
-              I'm a passionate frontend developer with a minimalist design approach, focused on building visually appealing and user-friendly web experiences.
+              I specialize in backend-focused full-stack development using Java Spring Boot and React, designing APIs, services, and data flows that scale.
             </p>
             <p className="text-md md:text-lg lg:text-xl text-neutral-300 leading-relaxed">
-              I enjoy transforming ideas into elegant interfaces using modern web technologies, with a focus on performance, accessibility, and simplicity.
+              I care about clean architecture, performance, and user-centric design, and I deploy reliable systems to Azure with robust CI/CD.
             </p>
           </div>
         </motion.div>

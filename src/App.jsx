@@ -5,6 +5,7 @@ import CustomCursor from './components/CustomCursor';
 import Landing from './components/Landing';
 import Expertise from './components/Expertise';
 import Journey from './components/Journey';
+import Projects from './components/Projects';
 import Education from './components/Education';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
@@ -17,6 +18,7 @@ const MainPortfolioContent = () => {
       <Expertise />
       <Education />
       <Journey />
+      <Projects />
       <Certifications />
       <Contact />
       <Footer />
@@ -26,19 +28,28 @@ const MainPortfolioContent = () => {
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const fadeTimer = setTimeout(() => {
+      setFadeOut(true);
+    }, 1800);
+    
+    const hideTimer = setTimeout(() => {
       setShowIntro(false);
-    }, 2000);
-    return () => clearTimeout(timer);
+    }, 2300);
+    
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(hideTimer);
+    };
   }, []);
 
   return (
     <div className="App bg-black bg-dot-texture">
       <CustomCursor />
       {showIntro ? (
-        <IntroAnimation />
+        <IntroAnimation fadeOut={fadeOut} />
       ) : (
         <MainPortfolioContent />
       )}

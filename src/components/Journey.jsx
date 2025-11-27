@@ -2,43 +2,43 @@ import { useRef } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
 import {
-  BookOpen, Wind, Braces, Atom, GalleryVerticalEnd, Server, Rocket,
+  BookOpen, Atom, Code2, Server, Cloud,
 } from 'lucide-react';
 
 const journeyData = [
   {
-    date: "October 2024",
-    title: "Started Learning Web Fundamentals",
-    description: "Began my journey with HTML & CSS, building my first static websites.",
+    date: "October–November 2024",
+    title: "Foundations in Web Development",
+    description: "Started with HTML, CSS, and Tailwind CSS to build responsive websites and understand modern UI design.",
     icon: <BookOpen />,
     status: 'completed',
   },
   {
-    date: "November 2024",
-    title: "Mastered Modern CSS Frameworks",
-    description: "Learned Bootstrap for layout and dove deep into Tailwind CSS for utility-first design.",
-    icon: <Wind />,
-    status: 'completed',
-  },
-  {
-    date: "May 2025",
-    title: "Built First React Applications",
-    description: "Completed the Meta Advanced React course and started building dynamic, component-based applications.",
+    date: "May–June 2025",
+    title: "React & Portfolio Launch",
+    description: "Completed Meta's Advanced React course, built component-based apps, and launched my personal portfolio with React, Vite, and Tailwind CSS.",
     icon: <Atom />,
     status: 'completed',
   },
   {
-    date: "June 2025",
-    title: "Launched My Portfolio",
-    description: "Applied all my skills to build this portfolio website using Vite, React, and Tailwind CSS.",
-    icon: <GalleryVerticalEnd />,
+    date: "July–September 2025",
+    title: "Full-Stack Development Journey",
+    description: "Built StyleSync and NotaVerse — full-stack applications using React, Firebase, Azure Blob Storage, and Node.js — and transitioned into Java backend development with Spring Boot.",
+    icon: <Code2 />,
+    status: 'completed',
+  },
+  {
+    date: "October–November 2025",
+    title: "Spring Boot & DevPulseX Journey",
+    description: "Mastered Spring Boot and developed DevPulseX, a full-stack Developer Productivity Dashboard integrating Spring Boot, React, GitHub APIs, and Azure CI/CD pipelines — marking my transition into strong backend architecture and full-stack systems.",
+    icon: <Server />,
     status: 'completed',
   },
   {
     date: "Upcoming",
-    title: "Diving into Backend Development",
-    description: "My next goal is to learn Java with the Spring and Spring Boot frameworks for full-stack capabilities.",
-    icon: <Server />,
+    title: "Cloud, Deployment & System Design",
+    description: "Focusing on Docker, cloud deployment on Azure, and scalable backend architecture — while improving system design and data structures to strengthen my backend engineering foundation.",
+    icon: <Cloud />,
     status: 'upcoming',
   },
 ];
@@ -153,16 +153,6 @@ const Journey = () => {
               <TimelineItem key={index} item={item} index={index} />
             ))}
           </motion.div>
-        </div>
-
-        <div className="mt-24 text-center">
-          <div className="inline-block bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-lg p-8">
-            <Rocket className="mx-auto h-12 w-12 text-orange-400 mb-4" />
-            <h3 className="text-2xl font-bold text-white mb-2">Projects Coming Soon!</h3>
-            <p className="text-gray-400 max-w-md mx-auto">
-              I'm currently applying my skills to build new and exciting projects. Check back soon to see them live.
-            </p>
-          </div>
         </div>
       </div>
     </section>

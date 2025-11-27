@@ -1,43 +1,65 @@
 import { motion } from 'framer-motion';
-import { Code, Layers, Smartphone, GitBranch } from 'lucide-react';
+import { Code, Layers, Cloud, GitBranch } from 'lucide-react';
 import {
-  SiReact, SiJavascript, SiHtml5, SiCss3,
-  SiTailwindcss, SiNodedotjs, SiVite, SiGit,
+  SiReact, SiJavascript, SiSpringboot,
+  SiTailwindcss, SiNodedotjs, SiGit,
+  SiApachemaven, SiDocker, SiPostman,
+  SiIntellijidea, SiGithub,
 } from 'react-icons/si';
+import { TbBrandVscode, TbBrandAzure } from 'react-icons/tb';
+import { FaJava } from 'react-icons/fa';
 
 const expertiseData = [
   {
     icon: <Code size={36} className="text-orange-400" />,
-    title: "Frontend Development",
-    description: "I build fast, interactive, and responsive websites and web applications using React, Next.js, and modern JavaScript.",
+    title: "Backend Development",
+    description:
+      "I develop robust REST APIs and secure backend systems using Java, Spring Boot, and Maven, focusing on clean architecture, performance, and database design.",
   },
   {
     icon: <Layers size={36} className="text-orange-400" />,
-    title: "UI/UX Design",
-    description: "I design clean and minimal user interfaces that are intuitive, efficient, and enjoyable to use, focusing on usability and consistency.",
+    title: "Full-Stack Web Applications",
+    description:
+      "I build end-to-end web apps using React with Spring Boot or Node.js, focusing on clean architecture, smooth data flow, and responsive performance.",
   },
   {
-    icon: <Smartphone size={36} className="text-orange-400" />,
-    title: "Responsive Design",
-    description: "I ensure seamless experiences across all devices, from mobile phones to desktops, by building fully responsive layouts.",
+    icon: <Cloud size={36} className="text-orange-400" />,
+    title: "Cloud & Deployment",
+    description:
+      "I deploy and manage applications on Microsoft Azure using CI/CD pipelines, containerize with Docker, and design systems for scalability and reliability.",
   },
   {
     icon: <GitBranch size={36} className="text-orange-400" />,
     title: "Tools & Workflow",
-    description: "I streamline development and collaboration using modern tools like Git, and VS Code for an efficient workflow.",
+    description:
+      "I use IntelliJ IDEA, VS Code, Git, and GitHub Actions for efficient development, version control, and CI/CD automation — streamlining teamwork and ensuring consistent, reliable delivery.",
   },
 ];
 
 const toolsData = [
-  { icon: <SiHtml5 size={32} />, name: "HTML5" },
-  { icon: <SiCss3 size={32} />, name: "CSS3" },
-  { icon: <SiJavascript size={32} />, name: "JavaScript" },
+  // Backend Core
+  { icon: <FaJava size={32} />, name: "Java" },
+  { icon: <SiSpringboot size={32} />, name: "Spring Boot" },
+  { icon: <SiApachemaven size={32} />, name: "Maven" },
+
+  // Frontend
   { icon: <SiReact size={32} />, name: "React" },
+  { icon: <SiJavascript size={32} />, name: "JavaScript" },
   { icon: <SiTailwindcss size={32} />, name: "Tailwind" },
   { icon: <SiNodedotjs size={32} />, name: "Node.js" },
-  { icon: <SiVite size={32} />, name: "Vite" },
+
+  // Cloud & DevOps
+  { icon: <TbBrandAzure size={32} />, name: "Azure" },
+  { icon: <SiDocker size={32} />, name: "Docker" },
   { icon: <SiGit size={32} />, name: "Git" },
+  { icon: <SiGithub size={32} />, name: "GitHub" },
+  { icon: <SiPostman size={32} />, name: "Postman" },
+
+  // Development Environments
+  { icon: <SiIntellijidea size={32} />, name: "IntelliJ IDEA" },
+  { icon: <TbBrandVscode size={32} />, name: "VS Code" },
 ];
+
 
 const containerVariants = {
   hidden: {},
@@ -102,7 +124,7 @@ const Expertise = () => {
             viewport={{ once: true, amount: 0.7 }}
             transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
           >
-            Combining creativity with clean, efficient code.
+            Building scalable, high-performance web applications with modern technologies.
           </motion.p>
         </div>
 
@@ -138,7 +160,9 @@ const Expertise = () => {
         </motion.div>
 
         <div className="text-center">
-          <h3 className="text-3xl font-bold text-gray-200 mb-12">Tools I Use</h3>
+          <h3 className="text-3xl md:text-4xl font-bold mb-12">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">Tech Stack &amp; Tools</span>
+          </h3>
           <motion.div
             className="flex flex-wrap justify-center items-center gap-x-8 gap-y-10 md:gap-x-12"
             initial="hidden"
