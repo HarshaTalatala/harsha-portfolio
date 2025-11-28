@@ -1,9 +1,42 @@
 import { motion } from 'framer-motion'; 
 import { FiMail } from 'react-icons/fi';
 import { SiGithub, SiInstagram, SiLinkedin, SiX } from 'react-icons/si';
+import { useState } from 'react';
 
 const Contact = () => {
   const formspreeEndpoint = 'mpwrdwek';
+  const [showToast, setShowToast] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(`https://formspree.io/f/${formspreeEndpoint}`, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setShowToast(true);
+        form.reset();
+        setTimeout(() => setShowToast(false), 5000);
+      } else {
+        alert('Oops! There was a problem submitting your form');
+      }
+    } catch (error) {
+      alert('Oops! There was a problem submitting your form');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const socialLinks = [
     {
@@ -71,14 +104,14 @@ const Contact = () => {
           <motion.div variants={itemVariants} className="max-w-lg mx-auto w-full">
             <h3 className="text-2xl font-bold mb-6 text-gray-100">Contact Me Directly</h3>
             <a
-              href="mailto:harsha.talatala@example.com" 
+              href="mailto:harsha.talatala@gmail.com" 
               className="inline-flex items-center gap-4 p-4 rounded-lg bg-gray-800/60 border border-gray-700 hover:border-orange-500 transition-colors duration-300 w-full mb-8"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FiMail className="text-orange-400 text-2xl flex-shrink-0" />
               <span className="font-medium text-gray-200 flex-1 text-center text-sm tracking-normal md:text-lg md:tracking-widest">
-                harsha.talatala@example.com
+                harsha.talatala@gmail.com
               </span>
             </a>
             
@@ -116,7 +149,7 @@ const Contact = () => {
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <form action={`https://formspree.io/f/${formspreeEndpoint}`} method="POST">
+            <form onSubmit={handleSubmit}>
               <div className="mb-5">
                 <label htmlFor="name" className="block text-gray-300 mb-2 font-medium">Your Name</label>
                 <input
@@ -152,15 +185,34 @@ const Contact = () => {
               </div>
               <motion.button
                 type="submit"
-                className="w-full bg-orange-500 text-white font-bold py-3 px-8 rounded-md transition-all duration-300"
-                whileHover={{ scale: 1.05, backgroundColor: "#F97316" }}
-                whileTap={{ scale: 0.95 }}
+                disabled={isSubmitting}
+                className="w-full bg-orange-500 text-white font-bold py-3 px-8 rounded-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                whileHover={{ scale: isSubmitting ? 1 : 1.05, backgroundColor: isSubmitting ? "#EA580C" : "#F97316" }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </motion.button>
             </form>
           </motion.div>
         </motion.div>
+
+        {/* Success Toast */}
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            className="fixed bottom-8 right-8 bg-green-500 text-white px-6 py-4 rounded-lg shadow-2xl flex items-center gap-3 z-50"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            <div>
+              <p className="font-bold">Message Sent Successfully!</p>
+              <p className="text-sm text-green-100">I'll get back to you soon.</p>
+            </div>
+          </motion.div>
+        )}
       </div>
     </section>
   );
