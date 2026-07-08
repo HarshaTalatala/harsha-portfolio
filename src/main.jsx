@@ -5,12 +5,7 @@ import './index.css';
 import App from './App.jsx';
 import ProjectsPage from './pages/ProjectsPage';
 import ErrorBoundary from './components/ErrorBoundary';
-import usePageAnalytics from './hooks/usePageAnalytics';
-
-const AnalyticsTracker = () => {
-  usePageAnalytics();
-  return null;
-};
+import AnalyticsTracker from './components/AnalyticsTracker';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
