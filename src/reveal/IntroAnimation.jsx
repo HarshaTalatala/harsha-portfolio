@@ -4,7 +4,7 @@ import './IntroAnimation.css';
 const IntroAnimation = ({ fadeOut }) => {
   return (
     <div className={`intro-container ${fadeOut ? 'fade-out' : ''}`}>
-      <TextReveal text="Harsha.Design" />
+      <TextReveal text="harshabuilds.tech" />
     </div>
   );
 };

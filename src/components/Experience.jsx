@@ -2,26 +2,17 @@ import { motion } from 'framer-motion';
 
 const experienceData = [
   {
-    role: 'Backend and Full-Stack Developer',
-    organization: 'Independent Projects',
-    duration: '2024 – Present',
-    location: 'Remote, India',
+    role: 'Backend Engineering Intern',
+    organization: 'Neeyat AI',
+    duration: 'Dec 2025 – Present',
+    location: 'India',
     impact: [
-      'Designed and shipped production-grade APIs with Java Spring Boot and Node.js for analytics and collaboration platforms.',
-      'Implemented secure authentication and role-based access patterns across multi-user systems.',
-      'Established CI/CD-first delivery workflows using GitHub Actions and Azure deployments.',
+      'Extended production Spring Boot REST APIs across authentication, CRUD, and third-party integration flows by updating controllers, service logic, and repository queries.',
+      'Integrated Gemini API into the Spring Boot service layer for automated test file generation, including API configuration, model selection, response parsing, and workflow execution.',
+      'Deployed production backend services on AWS EC2 by containerizing with Docker, configuring runtime variables and port mappings, and handling live deployments independently.',
+      'Modified Jenkins CI to detect and run backend test files automatically and generate post-build reports to surface build failures earlier in the development cycle.',
     ],
-  },
-  {
-    role: 'Technical Lead, Student Product Builds',
-    organization: 'University and Community Collaborations',
-    duration: '2025 – Present',
-    location: 'Andhra Pradesh, India',
-    impact: [
-      'Led project scoping, architecture decisions, and execution for student-focused full-stack applications.',
-      'Improved team delivery consistency through Git-based workflows and clear sprint-level ownership.',
-      'Mentored peers on React fundamentals, API integration, and deployment readiness.',
-    ],
+    stack: ['Spring Boot', 'REST APIs', 'Authentication', 'Gemini API', 'Docker', 'AWS EC2', 'Jenkins CI', 'PostgreSQL'],
   },
 ];
 
@@ -36,36 +27,44 @@ const Experience = () => {
             </span>
           </h2>
           <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-            Professional experience building backend-first, cloud-ready software systems and leading delivery from idea to production.
+            Production backend engineering ownership from API development through deployment and CI automation.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8">
           {experienceData.map((experience) => (
             <motion.article
               key={`${experience.role}-${experience.organization}`}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 26 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-              className="bg-gray-900/40 backdrop-blur-sm border border-white/10 rounded-xl p-8"
+              transition={{ duration: 0.45, ease: 'easeOut' }}
+              className="bg-gray-900/40 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-10"
             >
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-100">{experience.role}</h3>
-                  <p className="text-sm text-orange-400 font-medium">{experience.organization}</p>
+                  <h3 className="text-2xl font-bold text-gray-100">{experience.role}</h3>
+                  <p className="text-base text-orange-400 font-semibold mt-1">{experience.organization}</p>
                 </div>
-                <div className="text-sm text-gray-400 text-left sm:text-right">
+                <div className="text-sm text-gray-400 text-left lg:text-right">
                   <p>{experience.duration}</p>
                   <p>{experience.location}</p>
                 </div>
               </div>
 
-              <ul className="list-disc list-inside text-gray-300 space-y-2 leading-relaxed">
+              <ul className="list-disc list-inside text-gray-300 space-y-3 leading-relaxed mb-7">
                 {experience.impact.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
+
+              <div className="flex flex-wrap gap-2">
+                {experience.stack.map((item) => (
+                  <span key={item} className="text-xs px-3 py-1.5 bg-gray-800/70 text-gray-300 rounded-lg">
+                    {item}
+                  </span>
+                ))}
+              </div>
             </motion.article>
           ))}
         </div>

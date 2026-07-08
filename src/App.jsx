@@ -6,10 +6,8 @@ import CustomCursor from './components/CustomCursor';
 import Landing from './components/Landing';
 import Expertise from './components/Expertise';
 import Experience from './components/Experience';
-import Journey from './components/Journey';
 import Projects from './components/Projects';
 import Education from './components/Education';
-import Achievements from './components/Achievements';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -18,12 +16,10 @@ const MainPortfolioContent = () => {
   return (
     <div className="bg-dot-texture min-h-screen">
       <Landing />
-      <Expertise />
       <Experience />
       <Projects />
-      <Achievements />
+      <Expertise />
       <Education />
-      <Journey />
       <Certifications />
       <Contact />
       <Footer />
@@ -38,11 +34,11 @@ function App() {
   useEffect(() => {
     const fadeTimer = setTimeout(() => {
       setFadeOut(true);
-    }, 1800);
+    }, 1400);
 
     const hideTimer = setTimeout(() => {
       setShowIntro(false);
-    }, 2300);
+    }, 1850);
 
     return () => {
       clearTimeout(fadeTimer);

@@ -1,51 +1,21 @@
 import { motion } from 'framer-motion';
-import { SiCoursera, SiUdemy, SiGithub } from 'react-icons/si';
+import { SiCoursera, SiUdemy } from 'react-icons/si';
 import { FiArrowUpRight } from 'react-icons/fi';
-
-const SIcon = (props) => (
-  <div
-    {...props}
-    className={`text-2xl font-bold text-gray-900 w-10 h-10 flex items-center justify-center rounded ${props.className || ''}`}
-  >
-    S
-  </div>
-);
 
 const certificationsData = [
   {
-    name: 'Java Spring Framework 6 and Spring Boot 3',
-    platform: 'Udemy',
-    date: 'Completed',
+    name: 'Java Spring Framework 6 with Spring Boot 3',
+    platform: 'Telusko (Udemy)',
+    date: 'Completed: Sep 2025',
     link: 'https://www.udemy.com/certificate/UC-93f457f1-a1f9-48ed-bdd5-8457c79b9bd3/',
     Icon: SiUdemy,
   },
   {
-    name: 'Meta Advanced React',
-    platform: 'Coursera',
-    date: 'In Progress',
+    name: 'React Basics & Advanced',
+    platform: 'Meta (Coursera)',
+    date: 'Completed: Jun 2025',
     link: 'https://coursera.org/share/b34510b8718a257c8d3b05aa395b50ad',
     Icon: SiCoursera,
-  },
-  {
-    name: 'GitHub Foundations Certification',
-    platform: 'GitHub Education',
-    date: 'Active',
-    link: 'https://github.com/HarshaTalatala',
-    Icon: SiGithub,
-  },
-  {
-    name: 'Advanced JavaScript',
-    platform: 'Scrimba',
-    date: 'March 2025',
-    link: 'https://scrimba.com/certificate-cert29m6qiCokjQS7zY1jDeVTUgAHHj5YfFd9CYb8mp5AnBXg',
-    Icon: SIcon,
-  },
-  {
-    name: 'Tailwind CSS',
-    platform: 'Scrimba',
-    date: 'November 2024',
-    link: 'https://scrimba.com/certificate-cert24zAwJ78kYHKSE4ajCScsqyrgJD9ACumH4qgg',
-    Icon: SIcon,
   },
 ];
 
@@ -60,12 +30,11 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
-    transition: { type: 'spring', stiffness: 100, damping: 15 },
+    transition: { duration: 0.35, ease: 'easeOut' },
   },
 };
 
@@ -73,14 +42,14 @@ const Certifications = () => {
   return (
     <section id="certifications" className="text-white py-20 md:py-28">
       <div className="container mx-auto max-w-7xl px-6 text-center">
-        <div className="mb-16">
+        <div className="mb-14">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
-              Learning Highlights
+              Certifications
             </span>
           </h2>
           <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-            Ongoing learning focused on modern frontend development, backend architecture, and cloud-ready engineering practices.
+            Formal coursework completed in Spring Boot and React.
           </p>
         </div>
 
@@ -89,41 +58,32 @@ const Certifications = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {certificationsData.map((cert) => {
-            const CardComponent = cert.link ? motion.a : motion.div;
+          {certificationsData.map((cert) => (
+            <motion.a
+              key={cert.name}
+              href={cert.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={itemVariants}
+              className="bg-gray-900/45 border border-white/10 p-6 md:p-7 rounded-xl text-left flex flex-col h-full hover:border-orange-400/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
+              whileHover={{ y: -4 }}
+            >
+              <div className="flex justify-between items-start mb-4 gap-4">
+                <cert.Icon className="text-3xl text-gray-300" />
+                <p className="text-xs text-gray-500 text-right">{cert.date}</p>
+              </div>
 
-            return (
-              <CardComponent
-                key={cert.name}
-                href={cert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                variants={itemVariants}
-                className="bg-gray-900/40 backdrop-blur-sm p-6 rounded-lg text-left flex flex-col h-full border border-white/10 transition-colors duration-300 hover:border-orange-400/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
-                whileHover={{ y: -8, scale: 1.03 }}
-                style={{ willChange: 'transform' }}
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <cert.Icon className="text-4xl text-gray-400" />
-                  <div className="text-right">
-                    <p className="font-semibold text-gray-200">{cert.platform}</p>
-                    <p className="text-xs text-gray-500">{cert.date}</p>
-                  </div>
-                </div>
+              <h3 className="text-xl font-semibold text-gray-100 mb-3">{cert.name}</h3>
+              <p className="text-sm text-orange-300 mb-6">{cert.platform}</p>
 
-                <h3 className="text-xl font-bold text-gray-100 flex-grow mb-4">{cert.name}</h3>
-
-                {cert.link && (
-                  <div className="mt-auto pt-2 text-sm font-semibold text-orange-400 flex items-center gap-2">
-                    View Credential
-                    <FiArrowUpRight />
-                  </div>
-                )}
-              </CardComponent>
-            );
-          })}
+              <div className="mt-auto pt-2 text-sm font-semibold text-orange-400 flex items-center gap-2">
+                View Credential
+                <FiArrowUpRight />
+              </div>
+            </motion.a>
+          ))}
         </motion.div>
       </div>
     </section>

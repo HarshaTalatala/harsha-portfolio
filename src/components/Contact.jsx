@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiMail } from 'react-icons/fi';
+import { FiMail, FiPhone } from 'react-icons/fi';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { useState } from 'react';
 
@@ -57,28 +57,15 @@ const Contact = () => {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.2 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } },
-  };
-
   return (
     <section id="contact" className="text-white py-20 md:py-28 bg-gray-900/40">
       <div className="container mx-auto max-w-7xl px-6">
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: -30 }}
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: -24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.45 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
@@ -86,33 +73,32 @@ const Contact = () => {
             </span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Open to backend and full-stack opportunities, internships, and project collaborations.
+            Open to backend internship and software engineering opportunities.
           </p>
           <p className="text-sm text-gray-500 mt-2">Usually responds within 24–48 hours.</p>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-16"
-        >
-          <motion.div variants={itemVariants} className="max-w-lg mx-auto w-full">
-            <h3 className="text-2xl font-bold mb-6 text-gray-100">Email</h3>
-            <a
-              href="mailto:harsha.talatala@gmail.com"
-              className="inline-flex items-center gap-4 p-4 rounded-lg bg-gray-800/60 border border-gray-700 hover:border-orange-500 transition-colors duration-300 w-full mb-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FiMail className="text-orange-400 text-2xl flex-shrink-0" />
-              <span className="font-medium text-gray-200 flex-1 text-center text-sm tracking-normal md:text-lg md:tracking-widest">
-                harsha.talatala@gmail.com
-              </span>
-            </a>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="max-w-lg mx-auto w-full">
+            <h3 className="text-xl md:text-2xl font-semibold mb-5 text-gray-100">Direct Contact</h3>
+            <div className="space-y-4 mb-8">
+              <a
+                href="mailto:harsha.talatala@gmail.com"
+                className="inline-flex items-center gap-4 p-4 rounded-lg bg-gray-800/60 border border-gray-700 hover:border-orange-500 transition-colors duration-300 w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
+              >
+                <FiMail className="text-orange-400 text-xl flex-shrink-0" />
+                <span className="font-medium text-gray-200 text-sm md:text-base">harsha.talatala@gmail.com</span>
+              </a>
+              <a
+                href="tel:+919618096234"
+                className="inline-flex items-center gap-4 p-4 rounded-lg bg-gray-800/60 border border-gray-700 hover:border-orange-500 transition-colors duration-300 w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
+              >
+                <FiPhone className="text-orange-400 text-xl flex-shrink-0" />
+                <span className="font-medium text-gray-200 text-sm md:text-base">+91 9618096234</span>
+              </a>
+            </div>
 
-            <h3 className="text-2xl font-bold mb-6 text-gray-100">Professional Profiles</h3>
+            <h3 className="text-xl md:text-2xl font-semibold mb-5 text-gray-100">Profiles</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {professionalLinks.map(({ Icon, url, label, handle }) => (
                 <motion.a
@@ -122,11 +108,11 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   aria-label={label}
                   className="flex flex-col items-center justify-center rounded-xl bg-gray-800/60 border border-gray-700 hover:border-orange-400 p-4 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ scale: 1.04 }}
+                  whileHover={{ y: -2 }}
                   viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.4 }}
+                  transition={{ duration: 0.3 }}
                 >
                   <Icon className="text-2xl text-gray-300 mb-2" />
                   <span className="text-sm text-gray-200 font-medium">{label}</span>
@@ -134,9 +120,9 @@ const Contact = () => {
                 </motion.a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div variants={itemVariants}>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }}>
             <form onSubmit={handleSubmit} noValidate>
               <div className="mb-5">
                 <label htmlFor="name" className="block text-gray-300 mb-2 font-medium">
@@ -149,7 +135,7 @@ const Contact = () => {
                   required
                   autoComplete="name"
                   className="w-full bg-gray-800/50 border border-gray-700 rounded-md p-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-shadow"
-                  placeholder="John Doe"
+                  placeholder="Your name"
                 />
               </div>
               <div className="mb-5">
@@ -163,7 +149,7 @@ const Contact = () => {
                   required
                   autoComplete="email"
                   className="w-full bg-gray-800/50 border border-gray-700 rounded-md p-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-shadow"
-                  placeholder="john.doe@example.com"
+                  placeholder="you@example.com"
                 />
               </div>
               <div className="mb-5">
@@ -176,29 +162,25 @@ const Contact = () => {
                   required
                   rows="5"
                   className="w-full bg-gray-800/50 border border-gray-700 rounded-md p-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-shadow"
-                  placeholder="Hi, I'd like to discuss an opportunity..."
+                  placeholder="Share role details, project context, or collaboration goals..."
                 ></textarea>
               </div>
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-orange-500 text-white font-bold py-3 px-8 rounded-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
-                whileHover={{ scale: isSubmitting ? 1 : 1.03, backgroundColor: isSubmitting ? '#EA580C' : '#F97316' }}
-                whileTap={{ scale: isSubmitting ? 1 : 0.97 }}
+                className="w-full bg-orange-500 text-white font-semibold py-3 px-8 rounded-md transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
+                whileHover={{ scale: isSubmitting ? 1 : 1.01, backgroundColor: isSubmitting ? '#EA580C' : '#F97316' }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.99 }}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </motion.button>
             </form>
 
-            <p
-              className={`mt-4 text-sm ${statusType === 'error' ? 'text-red-400' : 'text-green-400'}`}
-              role="status"
-              aria-live="polite"
-            >
+            <p className={`mt-4 text-sm ${statusType === 'error' ? 'text-red-400' : 'text-green-400'}`} role="status" aria-live="polite">
               {statusMessage}
             </p>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

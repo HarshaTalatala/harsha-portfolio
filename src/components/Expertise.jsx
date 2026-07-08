@@ -1,198 +1,169 @@
 import { motion } from 'framer-motion';
-import { Code, Layers, Cloud, GitBranch } from 'lucide-react';
 import {
-  SiReact, SiJavascript, SiSpringboot,
-  SiTailwindcss, SiNodedotjs, SiGit,
-  SiApachemaven, SiDocker, SiPostman,
-  SiIntellijidea, SiGithub,
+  SiReact,
+  SiJavascript,
+  SiSpringboot,
+  SiTailwindcss,
+  SiDocker,
+  SiPostman,
+  SiIntellijidea,
+  SiGithub,
+  SiGithubactions,
+  SiMaven,
+  SiJenkins,
+  SiPostgresql,
+  SiFirebase,
+  SiHtml5,
+  SiCss3,
 } from 'react-icons/si';
-import { TbBrandVscode, TbBrandAzure } from 'react-icons/tb';
-import { FaJava } from 'react-icons/fa';
+import { FaJava, FaGitAlt } from 'react-icons/fa';
+import { TbBrandVscode, TbApi, TbBrandAws } from 'react-icons/tb';
 
-const expertiseData = [
+const skillGroups = [
   {
-    icon: <Code size={36} className="text-orange-400" />,
-    title: "Backend Development",
-    description:
-      "I develop robust REST APIs and secure backend systems using Java, Spring Boot, and Maven, focusing on clean architecture, performance, and database design.",
+    title: 'Backend',
+    description: 'Production API development and integration workflows in Java-focused backend services.',
+    skills: ['Java', 'Spring Boot', 'REST APIs', 'OAuth2', 'PostgreSQL', 'Firebase Firestore', 'Maven'],
   },
   {
-    icon: <Layers size={36} className="text-orange-400" />,
-    title: "Full-Stack Web Applications",
-    description:
-      "I build end-to-end web apps using React with Spring Boot or Node.js, focusing on clean architecture, smooth data flow, and responsive performance.",
+    title: 'Frontend',
+    description: 'Client-side interfaces for project dashboards and operational web applications.',
+    skills: ['React', 'Vite', 'Tailwind CSS', 'JavaScript (ES6+)', 'HTML5', 'CSS3'],
   },
   {
-    icon: <Cloud size={36} className="text-orange-400" />,
-    title: "Cloud & Deployment",
-    description:
-      "I deploy and manage applications on Microsoft Azure using CI/CD pipelines, containerize with Docker, and design systems for scalability and reliability.",
+    title: 'Cloud & CI/CD',
+    description: 'Deployment and automation workflows used in internship and project delivery.',
+    skills: ['AWS (EC2, VPC, Elastic Load Balancer)', 'Docker', 'Jenkins', 'GitHub Actions'],
   },
   {
-    icon: <GitBranch size={36} className="text-orange-400" />,
-    title: "Tools & Workflow",
-    description:
-      "I use IntelliJ IDEA, VS Code, Git, and GitHub Actions for efficient development, version control, and CI/CD automation — streamlining teamwork and ensuring consistent, reliable delivery.",
+    title: 'Tools',
+    description: 'Development and debugging stack used across backend and frontend workflows.',
+    skills: ['IntelliJ IDEA', 'VS Code', 'Git', 'GitHub', 'Postman'],
   },
 ];
 
 const toolsData = [
-  // Backend Core
-  { icon: <FaJava size={32} />, name: "Java" },
-  { icon: <SiSpringboot size={32} />, name: "Spring Boot" },
-  { icon: <SiApachemaven size={32} />, name: "Maven" },
-
-  // Frontend
-  { icon: <SiReact size={32} />, name: "React" },
-  { icon: <SiJavascript size={32} />, name: "JavaScript" },
-  { icon: <SiTailwindcss size={32} />, name: "Tailwind" },
-  { icon: <SiNodedotjs size={32} />, name: "Node.js" },
-
-  // Cloud & DevOps
-  { icon: <TbBrandAzure size={32} />, name: "Azure" },
-  { icon: <SiDocker size={32} />, name: "Docker" },
-  { icon: <SiGit size={32} />, name: "Git" },
-  { icon: <SiGithub size={32} />, name: "GitHub" },
-  { icon: <SiPostman size={32} />, name: "Postman" },
-
-  // Development Environments
-  { icon: <SiIntellijidea size={32} />, name: "IntelliJ IDEA" },
-  { icon: <TbBrandVscode size={32} />, name: "VS Code" },
+  { icon: <FaJava size={26} />, name: 'Java' },
+  { icon: <SiSpringboot size={26} />, name: 'Spring Boot' },
+  { icon: <TbApi size={26} />, name: 'REST APIs' },
+  { icon: <SiPostgresql size={26} />, name: 'PostgreSQL' },
+  { icon: <SiFirebase size={26} />, name: 'Firestore' },
+  { icon: <SiMaven size={26} />, name: 'Maven' },
+  { icon: <SiReact size={26} />, name: 'React' },
+  { icon: <SiJavascript size={26} />, name: 'JavaScript' },
+  { icon: <SiTailwindcss size={26} />, name: 'Tailwind CSS' },
+  { icon: <SiHtml5 size={26} />, name: 'HTML5' },
+  { icon: <SiCss3 size={26} />, name: 'CSS3' },
+  { icon: <TbBrandAws size={26} />, name: 'AWS' },
+  { icon: <SiDocker size={26} />, name: 'Docker' },
+  { icon: <SiJenkins size={26} />, name: 'Jenkins' },
+  { icon: <SiGithubactions size={26} />, name: 'GitHub Actions' },
+  { icon: <FaGitAlt size={26} />, name: 'Git' },
+  { icon: <SiGithub size={26} />, name: 'GitHub' },
+  { icon: <SiPostman size={26} />, name: 'Postman' },
+  { icon: <SiIntellijidea size={26} />, name: 'IntelliJ IDEA' },
+  { icon: <TbBrandVscode size={26} />, name: 'VS Code' },
 ];
-
 
 const containerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.14,
     },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
     transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 20,
-    },
-  },
-};
-
-const toolVariants = {
-  hidden: { opacity: 0, scale: 0.5 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 200,
-      damping: 20,
+      duration: 0.35,
+      ease: 'easeOut',
     },
   },
 };
 
 const Expertise = () => {
   return (
-    <motion.section
-      id="expertise"
-      className="py-24 px-4 sm:px-6 lg:px-8 text-white"
-    >
+    <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8 text-white">
       <div className="max-w-7xl mx-auto">
-
-        <div className="text-center mb-16">
+        <div className="text-center mb-14">
           <motion.h2
             className="text-4xl md:text-5xl font-bold mb-4"
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.7 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            transition={{ duration: 0.45, ease: 'easeOut' }}
           >
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
-              What I Do
+              Skills
             </span>
           </motion.h2>
           <motion.p
-            className="text-lg text-gray-400"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-lg text-gray-400 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.7 }}
-            transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
+            transition={{ delay: 0.1, duration: 0.35, ease: 'easeOut' }}
           >
-            Building scalable, high-performance web applications with modern technologies.
+            Technical stack used in production internship work and backend-driven project development.
           </motion.p>
         </div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
         >
-          {expertiseData.map((item) => (
-            <motion.div
-              key={item.title}
-              className="p-8 rounded-2xl flex flex-col items-start bg-gray-900/40 backdrop-blur-sm"
+          {skillGroups.map((group) => (
+            <motion.article
+              key={group.title}
+              className="p-6 md:p-7 rounded-2xl flex flex-col items-start bg-gray-900/45 border border-white/10"
               variants={cardVariants}
-              style={{ willChange: 'transform, opacity' }}
-              whileHover={{
-                scale: 1.05,
-                y: -8,
-                boxShadow: "0 12px 32px rgba(255,165,0,0.13)",
-                transition: { type: "spring", stiffness: 120, damping: 14 },
-              }}
-              whileTap={{
-                scale: 0.98,
-                transition: { type: "spring", stiffness: 200, damping: 20 },
-              }}
+              whileHover={{ y: -4, borderColor: 'rgba(251, 146, 60, 0.45)' }}
             >
-              <div className="mb-5">{item.icon}</div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-100">{item.title}</h3>
-              <p className="text-gray-400 text-base leading-relaxed">{item.description}</p>
-            </motion.div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-100">{group.title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">{group.description}</p>
+              <div className="flex flex-wrap gap-2">
+                {group.skills.map((skill) => (
+                  <span key={skill} className="text-xs px-2.5 py-1.5 bg-gray-800/70 text-gray-300 rounded-md">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.article>
           ))}
         </motion.div>
 
-        <div className="text-center">
-          <h3 className="text-3xl md:text-4xl font-bold mb-12">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">Tech Stack &amp; Tools</span>
-          </h3>
-          <motion.div
-            className="flex flex-wrap justify-center items-center gap-x-8 gap-y-10 md:gap-x-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-          >
-            {toolsData.map((tool) => (
-              <motion.div
-                key={tool.name}
-                className="relative group flex flex-col items-center"
-                variants={toolVariants}
-                whileHover={{ scale: 1.15, y: -4 }}
+        <motion.div
+          className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-3 md:gap-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{ visible: { transition: { staggerChildren: 0.04 } } }}
+        >
+          {toolsData.map((tool) => (
+            <motion.div
+              key={tool.name}
+              variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
+              className="group"
+            >
+              <div
+                title={tool.name}
+                className="h-14 rounded-xl bg-gray-900/45 border border-white/10 text-gray-400 group-hover:text-orange-300 group-hover:border-orange-400/60 transition-colors duration-200 flex items-center justify-center"
               >
-                <div
-                  title={tool.name}
-                  className="p-4 bg-gray-900/40 rounded-xl text-gray-400 group-hover:text-orange-400 transition-colors duration-300"
-                >
-                  {tool.icon}
-                </div>
-                <span className="absolute -bottom-8 text-sm text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  {tool.name}
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-
+                {tool.icon}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 
