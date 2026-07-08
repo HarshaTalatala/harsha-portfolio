@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { MotionConfig } from 'framer-motion';
 import './App.css';
 import IntroAnimation from './reveal/IntroAnimation';
 import CustomCursor from './components/CustomCursor';
 import Landing from './components/Landing';
 import Expertise from './components/Expertise';
+import Experience from './components/Experience';
 import Journey from './components/Journey';
 import Projects from './components/Projects';
 import Education from './components/Education';
+import Achievements from './components/Achievements';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -16,9 +19,11 @@ const MainPortfolioContent = () => {
     <div className="bg-dot-texture min-h-screen">
       <Landing />
       <Expertise />
+      <Experience />
+      <Projects />
+      <Achievements />
       <Education />
       <Journey />
-      <Projects />
       <Certifications />
       <Contact />
       <Footer />
@@ -34,11 +39,11 @@ function App() {
     const fadeTimer = setTimeout(() => {
       setFadeOut(true);
     }, 1800);
-    
+
     const hideTimer = setTimeout(() => {
       setShowIntro(false);
     }, 2300);
-    
+
     return () => {
       clearTimeout(fadeTimer);
       clearTimeout(hideTimer);
@@ -46,14 +51,12 @@ function App() {
   }, []);
 
   return (
-    <div className="App bg-black bg-dot-texture">
-      <CustomCursor />
-      {showIntro ? (
-        <IntroAnimation fadeOut={fadeOut} />
-      ) : (
-        <MainPortfolioContent />
-      )}
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="App bg-black bg-dot-texture">
+        <CustomCursor />
+        {showIntro ? <IntroAnimation fadeOut={fadeOut} /> : <MainPortfolioContent />}
+      </div>
+    </MotionConfig>
   );
 }
 

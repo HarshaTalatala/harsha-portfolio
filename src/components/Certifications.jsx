@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
-import { SiCoursera, SiUdemy, SiGithub, SiFreecodecamp } from 'react-icons/si';
+import { SiCoursera, SiUdemy, SiGithub } from 'react-icons/si';
 import { FiArrowUpRight } from 'react-icons/fi';
-
 
 const SIcon = (props) => (
   <div
     {...props}
-    className={`text-2xl font-bold text-grey-900 w-10 h-10 flex items-center justify-center rounded ${props.className || ''}`}
+    className={`text-2xl font-bold text-gray-900 w-10 h-10 flex items-center justify-center rounded ${props.className || ''}`}
   >
     S
   </div>
@@ -14,13 +13,13 @@ const SIcon = (props) => (
 
 const certificationsData = [
   {
-    name: 'Java Spring Framework 6 & Spring Boot 3',
+    name: 'Java Spring Framework 6 and Spring Boot 3',
     platform: 'Udemy',
     date: 'Completed',
     link: 'https://www.udemy.com/certificate/UC-93f457f1-a1f9-48ed-bdd5-8457c79b9bd3/',
     Icon: SiUdemy,
   },
-     {
+  {
     name: 'Meta Advanced React',
     platform: 'Coursera',
     date: 'In Progress',
@@ -31,11 +30,11 @@ const certificationsData = [
     name: 'GitHub Foundations Certification',
     platform: 'GitHub Education',
     date: 'Active',
-    link: 'http://www.github.com/HarshaTalatala',
+    link: 'https://github.com/HarshaTalatala',
     Icon: SiGithub,
   },
   {
-    name: 'Advanced Javascript',
+    name: 'Advanced JavaScript',
     platform: 'Scrimba',
     date: 'March 2025',
     link: 'https://scrimba.com/certificate-cert29m6qiCokjQS7zY1jDeVTUgAHHj5YfFd9CYb8mp5AnBXg',
@@ -44,10 +43,10 @@ const certificationsData = [
   {
     name: 'Tailwind CSS',
     platform: 'Scrimba',
-    date: 'NOV 2024',
+    date: 'November 2024',
     link: 'https://scrimba.com/certificate-cert24zAwJ78kYHKSE4ajCScsqyrgJD9ACumH4qgg',
     Icon: SIcon,
-  }
+  },
 ];
 
 const containerVariants = {
@@ -81,7 +80,7 @@ const Certifications = () => {
             </span>
           </h2>
           <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-            My commitment to continuous learning and staying current with industry technologies.
+            Ongoing learning focused on modern frontend development, backend architecture, and cloud-ready engineering practices.
           </p>
         </div>
 
@@ -89,20 +88,20 @@ const Certifications = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }} 
+          viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {certificationsData.map((cert, index) => {
+          {certificationsData.map((cert) => {
             const CardComponent = cert.link ? motion.a : motion.div;
 
             return (
               <CardComponent
-                key={index}
+                key={cert.name}
                 href={cert.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={itemVariants}
-                className="bg-gray-900/40 backdrop-blur-sm p-6 rounded-lg text-left flex flex-col h-full border border-white/10 transition-colors duration-300 hover:border-orange-400/60"
+                className="bg-gray-900/40 backdrop-blur-sm p-6 rounded-lg text-left flex flex-col h-full border border-white/10 transition-colors duration-300 hover:border-orange-400/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
                 whileHover={{ y: -8, scale: 1.03 }}
                 style={{ willChange: 'transform' }}
               >
@@ -114,9 +113,7 @@ const Certifications = () => {
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-gray-100 flex-grow mb-4">
-                  {cert.name}
-                </h3>
+                <h3 className="text-xl font-bold text-gray-100 flex-grow mb-4">{cert.name}</h3>
 
                 {cert.link && (
                   <div className="mt-auto pt-2 text-sm font-semibold text-orange-400 flex items-center gap-2">

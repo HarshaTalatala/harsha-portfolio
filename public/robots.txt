@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://ashy-desert-052258b00.1.azurestaticapps.net/sitemap.xml

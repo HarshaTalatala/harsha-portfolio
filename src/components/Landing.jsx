@@ -2,9 +2,13 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const navItems = [
-  { id: 'resume', name: 'Resume', url: 'https://drive.google.com/file/d/1fvN6ldD5Yaa4Akexv1VaENh28Nl0VyoO/view?usp=sharing' },
+  {
+    id: 'resume',
+    name: 'Resume',
+    url: 'https://drive.google.com/file/d/1fvN6ldD5Yaa4Akexv1VaENh28Nl0VyoO/view?usp=sharing',
+  },
   { id: 'projects', name: 'Projects', url: '#projects' },
-  { id: 'linkedin', name: 'Linkedin', url: 'https://www.linkedin.com/in/HarshaTalatala' },
+  { id: 'linkedin', name: 'LinkedIn', url: 'https://www.linkedin.com/in/HarshaTalatala' },
   { id: 'github', name: 'GitHub', url: 'https://github.com/HarshaTalatala' },
 ];
 
@@ -20,21 +24,21 @@ const Landing = () => {
             href={item.url}
             onClick={(e) => {
               setActiveLink(item.id);
-                if (item.url) {
-                  if (item.url.startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = item.url.replace('#', '');
-                    document.getElementById(targetId)?.scrollIntoView({
-                      behavior: 'smooth',
-                      block: 'start',
-                    });
-                  } else {
-                    e.preventDefault();
-                    window.open(item.url, '_blank', 'noopener,noreferrer');
-                  }
+              if (item.url) {
+                if (item.url.startsWith('#')) {
+                  e.preventDefault();
+                  const targetId = item.url.replace('#', '');
+                  document.getElementById(targetId)?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                  });
+                } else {
+                  e.preventDefault();
+                  window.open(item.url, '_blank', 'noopener,noreferrer');
                 }
+              }
             }}
-            className={`relative px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded-full z-10 transition-colors duration-300 ${
+            className={`relative px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded-full z-10 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400 focus-visible:outline-offset-2 ${
               activeLink === item.id
                 ? 'text-orange-500'
                 : 'text-neutral-400 hover:text-white'
@@ -55,7 +59,7 @@ const Landing = () => {
         ))}
         <a
           href="#contact"
-          className="relative ml-2 px-3 sm:px-5 py-2 text-xs sm:text-sm font-medium bg-white text-black rounded-full transition-transform duration-300 ease-in-out hover:scale-105"
+          className="relative ml-2 px-3 sm:px-5 py-2 text-xs sm:text-sm font-medium bg-white text-black rounded-full transition-transform duration-300 ease-in-out hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400 focus-visible:outline-offset-2"
         >
           Contact
         </a>
@@ -64,20 +68,28 @@ const Landing = () => {
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 md:pt-56 pb-16 md:pb-20">
         <header className="text-left mb-16 min-h-[120px] max-w-full">
           <motion.h1
-            className="break-words text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-orange-500 to-amber-300 bg-clip-text text-transparent tracking-tight"
+            className="break-words text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-orange-500 to-amber-300 bg-clip-text text-transparent tracking-tight"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
-            Harsha Vardhan Reddy Talatala
+            Backend-Focused Full-Stack Engineer Building Reliable Cloud Applications
           </motion.h1>
           <motion.p
-            className="pt-1 text-lg md:text-xl text-neutral-400"
+            className="pt-4 text-lg md:text-xl text-neutral-300 max-w-4xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.4, ease: 'easeOut' }}
           >
-            Backend-Focused Full Stack Developer
+            I design and deliver secure APIs, production-ready services, and performant React experiences with Java Spring Boot, Node.js, and Azure.
+          </motion.p>
+          <motion.p
+            className="pt-3 text-sm md:text-base text-neutral-400"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.35, ease: 'easeOut' }}
+          >
+            Currently seeking backend or full-stack internship and full-time opportunities (India, IST / UTC+5:30).
           </motion.p>
         </header>
 
@@ -95,7 +107,7 @@ const Landing = () => {
               I specialize in backend-focused full-stack development using Java Spring Boot and React, designing APIs, services, and data flows that scale.
             </p>
             <p className="text-md md:text-lg lg:text-xl text-neutral-300 leading-relaxed">
-              I care about clean architecture, performance, and user-centric design, and I deploy reliable systems to Azure with robust CI/CD.
+              I focus on clean architecture, measurable performance improvements, and dependable deployments through automated Azure CI/CD pipelines.
             </p>
           </div>
         </motion.div>
@@ -110,7 +122,7 @@ const Landing = () => {
               duration: 1.5,
               ease: 'easeInOut',
             }}
-            className="flex flex-col items-center cursor-pointer"
+            className="flex flex-col items-center cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400 focus-visible:outline-offset-4 rounded"
             aria-label="Scroll down"
             onClick={(e) => {
               e.preventDefault();

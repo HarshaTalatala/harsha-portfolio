@@ -1,77 +1,94 @@
-# 🌐 Personal Portfolio Website
+# Harsha Portfolio
 
-Welcome to My Personal Developer Portfolio Website! This project showcases my skills, projects, education, and experience. Built with modern Frontend Technologies and hosted using CI/CD workflows for seamless deployment.
+Professional portfolio website built with React, Vite, and Tailwind CSS to showcase backend-focused full-stack engineering projects, experience, and achievements.
 
----
+## Tech Stack
 
-## 🚀 Tech Stack
+- **Framework:** React 19 + Vite
+- **Styling:** Tailwind CSS
+- **Animation:** Framer Motion
+- **Routing:** React Router
+- **Deployment:** Azure Static Web Apps (GitHub Actions CI/CD)
 
-- **Frontend:** [React](https://react.dev/), [Vite](https://vitejs.dev/), [Tailwind CSS](https://tailwindcss.com/)
-- **Deployment:** [Azure Static Web Apps](https://azure.microsoft.com/en-us/products/app-service/static/)
-- **CI/CD:** [GitHub Actions](https://docs.github.com/en/actions)
+## Project Structure
 
----
-
-## 📁 Folder Structure
-```
-/public           # Static assets (images, favicon, etc.)
+```text
+/public
+  /fonts
+  favicon.ico
+  robots.txt
+  sitemap.xml
+  404.html
 /src
-    /assets         # Images, fonts, and other assets
-    /components     # Reusable React components
-    /pages          # Page components (Home, About, Projects, etc.)
-    /styles         # Tailwind and custom CSS files
-    /utils          # Utility functions and helpers
-    App.jsx         # Main app component
-    main.jsx        # Entry point
-/vite.config.js   # Vite configuration
-/tailwind.config.js # Tailwind CSS configuration
-/package.json     # Project metadata and dependencies
-/README.md        # Project documentation
+  /components
+    Achievements.jsx
+    Certifications.jsx
+    Contact.jsx
+    CustomCursor.jsx
+    Education.jsx
+    ErrorBoundary.jsx
+    Expertise.jsx
+    Experience.jsx
+    Footer.jsx
+    Journey.jsx
+    Landing.jsx
+    Projects.jsx
+  /hooks
+    usePageAnalytics.js
+  /pages
+    ProjectsPage.jsx
+  /reveal
+    IntroAnimation.jsx
+    TextReveal.jsx
+  App.jsx
+  App.css
+  index.css
+  main.jsx
+index.html
+package.json
 ```
 
----
+## Getting Started
 
-## 🛠️ Getting Started
+1. Install dependencies:
 
-1. **Clone the repository:**
-     ```bash
-     git clone https://github.com/HarshaTalatala/portfolio-react.git
-     cd portfolio-react
-     ```
+   ```bash
+   npm install
+   ```
 
-2. **Install dependencies:**
-     ```bash
-     npm install
-     ```
+2. Start local development:
 
-3. **Start the development server:**
-     ```bash
-     npm run dev
-     ```
+   ```bash
+   npm run dev
+   ```
 
-4. **Build for production:**
-     ```bash
-     npm run build
-     ```
+3. Run lint checks:
 
----
+   ```bash
+   npm run lint
+   ```
 
-## 📦 Deployment
+4. Build for production:
 
-This project uses GitHub Actions for CI/CD and is deployed to Azure Static Web Apps. Push to the `main` branch to trigger deployment.
+   ```bash
+   npm run build
+   ```
 
----
+## Optional Analytics Setup
 
-## 🙋‍♂️ Contact
+Analytics is enabled only when `VITE_GA_MEASUREMENT_ID` is set.
 
-Feel free to connect with me on [LinkedIn](https://www.linkedin.com/HarshaTalatala) or check out my [GitHub](https://github.com/HarshaTalatala).
+Create a `.env` file in the project root:
 
----
+```bash
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
 
-## ⭐️ Acknowledgements
+## Deployment
 
-- [React](https://react.dev/)
-- [Vite](https://vitejs.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Azure Static Web Apps](https://azure.microsoft.com/en-us/products/app-service/static/)
-- [GitHub Actions](https://docs.github.com/en/actions)
+Pushes to `main` trigger the Azure Static Web Apps workflow in `.github/workflows/azure-static-web-apps-ashy-desert-052258b00.yml`.
+
+## Contact
+
+- LinkedIn: [linkedin.com/in/HarshaTalatala](https://www.linkedin.com/in/HarshaTalatala)
+- GitHub: [github.com/HarshaTalatala](https://github.com/HarshaTalatala)

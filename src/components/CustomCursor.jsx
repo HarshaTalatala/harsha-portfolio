@@ -4,24 +4,26 @@ const CustomCursor = () => {
   const cursorRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   useEffect(() => {
-    const checkDevice = () => {
-      setIsMobile(window.innerWidth < 768);
+    const checkPreferences = () => {
+      const isMobileViewport = window.innerWidth < 768;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+      setIsDisabled(isMobileViewport || prefersReducedMotion || !hasFinePointer);
     };
 
-    checkDevice();
-
-    window.addEventListener('resize', checkDevice);
+    checkPreferences();
+    window.addEventListener('resize', checkPreferences);
 
     return () => {
-      window.removeEventListener('resize', checkDevice);
+      window.removeEventListener('resize', checkPreferences);
     };
   }, []);
 
   useEffect(() => {
-    if (isMobile) return;
+    if (isDisabled) return;
 
     const cursor = cursorRef.current;
 
@@ -41,9 +43,7 @@ const CustomCursor = () => {
       setIsClicked(false);
     };
 
-    const hoverTargets = document.querySelectorAll(
-      'a, button, input, textarea, select, [role="button"]'
-    );
+    const hoverTargets = document.querySelectorAll('a, button, input, textarea, select, [role="button"]');
 
     const addHover = () => setIsHovered(true);
     const removeHover = () => setIsHovered(false);
@@ -66,9 +66,9 @@ const CustomCursor = () => {
         el.removeEventListener('mouseleave', removeHover);
       });
     };
-  }, [isMobile]);
+  }, [isDisabled]);
 
-  if (isMobile) {
+  if (isDisabled) {
     return null;
   }
 
